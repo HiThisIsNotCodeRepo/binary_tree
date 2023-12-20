@@ -78,7 +78,8 @@ If we know the maximum depth l of the subtree rooted at its left child and the m
 its right child, can we answer the previous question? Of course yes, we can choose the maximum between them and add 1 to
 get the maximum depth of the subtree rooted at the current node. That is x = max(l, r) + 1.
 
-It means that for each node, we can get the answer after solving the problem for its children. Therefore, we can solve this problem using a "bottom-up" solution. Here is the pseudocode for the recursive function maximum_depth(root):
+It means that for each node, we can get the answer after solving the problem for its children. Therefore, we can solve
+this problem using a "bottom-up" solution. Here is the pseudocode for the recursive function maximum_depth(root):
 
 ```
 1. return 0 if root is null                 // return 0 for null node
@@ -101,3 +102,18 @@ int maximum_depth(TreeNode* root) {
     return max(left_depth, right_depth) + 1;      // return depth of the subtree rooted at root
 }
 ```
+
+*Conclusion*
+
+It is not easy to understand recursion and find a recursive solution for the problem. It needs practice.
+
+When you meet a tree problem, ask yourself two questions: Can you determine some parameters to help the node know its
+answer? Can you use these parameters and the value of the node itself to determine what should be the parameters passed
+to its children? If the answers are both yes, try to solve this problem using a "top-down" recursive solution.
+
+Or, you can think of the problem in this way: for a node in a tree, if you know the answer of its children, can you
+calculate the answer of that node? If the answer is yes, solving the problem recursively using a bottom-up approach
+might be a good idea.
+
+In the following sections, we provide several classic problems for you to help you understand tree structure and
+recursion better.
