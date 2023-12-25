@@ -21,16 +21,16 @@ private:
     int level;
 public:
     int maxDepth(TreeNode *root) {
-        recurse(root, 0);
+        maxDepthR(root, 0);
         return level;
     }
 
-    void recurse(TreeNode *node, int currentLevel) {
+    void maxDepthR(TreeNode *node, int currentLevel) {
         if (node == nullptr) {
             level = max(currentLevel, level);
             return;
         }
-        recurse(node->left, currentLevel + 1);
-        recurse(node->right, currentLevel + 1);
+        maxDepthR(node->left, currentLevel + 1);
+        maxDepthR(node->right, currentLevel + 1);
     }
 };
