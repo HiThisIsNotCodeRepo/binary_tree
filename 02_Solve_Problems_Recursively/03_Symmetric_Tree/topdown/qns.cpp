@@ -19,34 +19,29 @@ struct TreeNode {
 class Solution {
 public:
     bool isSymmetric(TreeNode *root) {
-        if (root->left != nullptr && root->right != nullptr) {
-            return isSymmetricR(root->left, root->right);
-        } else if (!(root->left == nullptr && root->right == nullptr)) {
+        return check(root->left, root->right);
+    }
+
+    bool check(TreeNode *left, TreeNode *right) {
+        if (left != nullptr && right != nullptr) {
+            return isSymmetricR(left, right);
+        } else if (!(left == nullptr && right == nullptr)) {
             return false;
         }
         return true;
     }
 
-    bool isSymmetricR(TreeNode *root, TreeNode *mir) {
-        if (root->val != mir->val) {
+    bool isSymmetricR(TreeNode *left, TreeNode *right) {
+        if (left->val != right->val) {
             return false;
         }
-        bool ret;
-        if (root->left != nullptr && mir->right != nullptr) {
-            ret = isSymmetricR(root->left, mir->right);
-            if (ret == false) {
-                return ret;
-            }
-        } else if (!(root->left == nullptr && mir->right == nullptr)) {
-            return false;
+        bool ret = check(left->left,right->right);
+        if (ret == false) {
+            return ret;
         }
-        if (root->right != nullptr && mir->left != nullptr) {
-            ret = isSymmetricR(root->right, mir->left);
-            if (ret == false) {
-                return ret;
-            }
-        } else if (!(root->right == nullptr && mir->left == nullptr)) {
-            return false;
+        ret = check(left->right,right->left);
+        if (ret == false) {
+            return ret;
         }
         return true;
     }
